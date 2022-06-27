@@ -1,0 +1,13 @@
+// Responsive
+
+@mixin tablets-only {
+    @media screen and (min-width: map-get($breakpoints, tablets)){
+        @content;
+    }
+}
+
+@mixin desktop-only {
+    @media screen and (min-width: map-get($breakpoints, desktop)){
+        @content;
+    }
+}
