@@ -1,14 +1,14 @@
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 
-const Band = () =>{
+const User = () =>{
     return (
         <>
         <Header />
-        <h1>Les groupes</h1>
+        <h1>Les utilisateurs</h1>
         <Nav />
-        </>
+    </>
     )
 };
 
-export default Band;
+export default User;

@@ -1,22 +1,38 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
 
     const navItems = [
-        "fas fa-home",
-        "fas fa-calendar-alt",
-        "fas fa-microphone-alt",
-        "fas fa-drum",
-        "fas fa-users"
+        {
+            "clsName": "fas fa-home",
+            "pathName": "/"
+        },
+        {
+            "clsName": "fas fa-calendar-alt",
+            "pathName": "/evenements"
+        },
+        {
+            "clsName": "fas fa-microphone-alt",
+            "pathName": "/materiel"
+        },
+        {
+            "clsName": "fas fa-drum",
+            "pathName": "/groupes"
+        },
+        {
+            "clsName":"fas fa-users",
+            "pathName": "/utilisateurs"
+        }
     ];
 
-    const ItemsComponents = ({ cls }) => <li><i className={cls}></i></li>;
+    const ItemsComponents = ({ cls, pathName }) => <li><NavLink to={pathName}><i className={cls}></i></NavLink></li>;
 
     return (
         <nav>
             <ul>
                 {
-                    navItems.map((classAttribute, idx) => <ItemsComponents cls={classAttribute} key={idx}></ItemsComponents>)
+                    navItems.map(({clsName,pathName}, idx) => <ItemsComponents cls={clsName} pathName={pathName} key={idx}></ItemsComponents>)
                 }
             </ul>
         </nav>
