@@ -1,0 +1,18 @@
+@import "../assets/scss/utils/variables";
+
+body{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    border: solid;  
+
+    main{
+        display: flex;
+        align-items: center;
+        // width: 95vw;
+        height: calc(100vh - 10rem );
+        // border: solid;
+    }
+}
+

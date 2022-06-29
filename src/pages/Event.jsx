@@ -1,11 +1,12 @@
-import Header from "../components/Header";
-import Nav from "../components/Nav";
+import Header from "../layouts/Header";
+import Nav from "../layouts/Nav";
+import Main from "../layouts/Main";
 
 const Event = () =>{
     return (
         <>
             <Header />
-            <h1>Les évènements</h1>
+            <Main />
             <Nav />
         </>
     )

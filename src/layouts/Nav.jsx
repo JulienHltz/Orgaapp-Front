@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
@@ -6,7 +5,7 @@ const Nav = () => {
     const navItems = [
         {
             "clsName": "fas fa-home",
-            "pathName": "/"
+            "pathName": "/connexion"
         },
         {
             "clsName": "fas fa-calendar-alt",
@@ -26,7 +25,7 @@ const Nav = () => {
         }
     ];
 
-    const ItemsComponents = ({ cls, pathName }) => <li><NavLink to={pathName}><i className={cls}></i></NavLink></li>;
+    const ItemsComponents = ({ cls, pathName }) => <li><NavLink to={pathName} className={({ isActive }) => (isActive ? "link-active" : " ")}><i className={cls}></i></NavLink></li>;
 
     return (
         <nav>

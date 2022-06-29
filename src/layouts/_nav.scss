@@ -13,6 +13,7 @@ nav{
     background-color: white;
     ul{
       display: flex;
+      
       list-style-type: none;
       justify-content: space-between;
       font-size: 2rem;
@@ -22,8 +23,18 @@ nav{
         }
         li:last-child{
             padding-right: 0.5rem;
+            
         }
+        .link-active{
+          color:$defaultpurple;
+
+        }
+
     }
+    a, a:hover, a:focus, a:active {
+      text-decoration: none;
+      color: inherit;
+}
 }
   
   

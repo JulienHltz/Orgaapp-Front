@@ -1,11 +1,12 @@
-import Header from "../components/Header";
-import Nav from "../components/Nav";
+import Header from "../layouts/Header";
+import Nav from "../layouts/Nav";
+import Main from "../layouts/Main";
 
 const Equipement = () => {
     return (
         <>
             <Header />
-            <h1>Le matos</h1>
+            <Main />
             <Nav />
         </>
     )
