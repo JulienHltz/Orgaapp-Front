@@ -12,10 +12,21 @@ gap: 2.5rem;
 
 
 
-#imgLoginContainer{
-
+.imgLoginContainer{
     width: 20rem;
     height: 7rem;
+    animation: translate 1.2s ease-in forwards;
+    transform: translateY(-80%);
+    opacity: 0;
+
+       
+
+        @keyframes translate {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
     img{
         background-size: cover;

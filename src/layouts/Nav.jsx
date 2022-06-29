@@ -5,6 +5,10 @@ const Nav = () => {
     const navItems = [
         {
             "clsName": "fas fa-home",
+            "pathName": "/"
+        },
+        {
+            "clsName": "fas fa-key",
             "pathName": "/connexion"
         },
         {

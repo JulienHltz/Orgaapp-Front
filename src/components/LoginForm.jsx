@@ -4,7 +4,7 @@ import "../layouts/_loginform.scss";
 const LoginForm = () => {
   return (
     <div id="loginContainer">
-      <div id="imgLoginContainer">
+      <div className="imgLoginContainer">
         <img src={logoOrgaapp} alt="logoOrgaapp" />
       </div>
       <div id="loginFormContainer">
