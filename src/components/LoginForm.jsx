@@ -39,7 +39,7 @@ const LoginForm = () => {
           className='form-control'
           value={userEmail}
           onChange={e => setUserEmail(e.target.value)}  />
-          <label htmlFor='userpassword'>Mot de passe</label>
+          <label htmlFor='userpassword'>Mot de passe :</label>
           <input type='password'
           id='userpassword'
           className='form-control'

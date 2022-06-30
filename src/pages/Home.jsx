@@ -1,6 +1,3 @@
-import Header from "../layouts/Header";
-import Main from "../layouts/Main";
-import Nav from "../layouts/Nav";
 import logoOrgaapp from "../assets/images/logofull2.png";
 import "./_home.scss";
 

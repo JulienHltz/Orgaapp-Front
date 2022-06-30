@@ -29,9 +29,24 @@ header{
     #points{
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: flex-end;
         font-size: 1.6rem;
         width: 30%;
+
+        button{
+            background: none;
+            border: none;
+            width: fit-content;
+            height: fit-content;
+            display: inline-block;
+
+            
+            i{
+                font-size: 1.3rem;
+                color: $defaultpurple;
+            }
+        }
+
     }
     #pagetitle{
         display: flex;
@@ -59,7 +74,73 @@ header{
         height: 90%;
         object-fit: cover;
     }
+
+
+    
+    
 }
+
+    // Fenêtre Modale
+
+  .Modal{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    gap: 3rem;
+    top: 30%;
+    left: 20%;
+    right: 20%;
+    bottom: 30%;
+    background-color: $lightpurple;
+    border: solid black 0.5px;
+    border-radius: 0.2rem;
+    p{
+        text-align: center;
+        font-weight: bold;
+    }
+
+    #buttonDiv{
+        display: flex;
+        justify-content: center;
+        gap: 3.5rem;
+    }
+
+    p{
+        font-family: 'Orbitron';
+        font-size: 1rem;
+    }
+
+    #yes {
+        background-color: rgb(39, 102, 23);
+        color: whitesmoke;
+        font-family: 'Orbitron';
+        padding: 0.3rem;
+        width: 4rem;
+
+    }
+    #no {
+        background-color: rgb(161, 49, 59);
+        color: white;
+        font-family: 'Orbitron';
+        padding: 0.3rem;
+        width: 4rem;
+
+        
+
+    }
+  }
+
+  .Overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(0, 0, 0, 0.9);
+    // opacity: 0.2;
+    // background-color: rebeccapurple;
+  }
 
   
   
