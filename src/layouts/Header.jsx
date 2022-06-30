@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { TitleContext } from "./Titre";
+import { TitleContext } from "./Layout";
 
 import './_header.scss';
 

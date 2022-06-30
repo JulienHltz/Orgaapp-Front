@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 
 import Header from './Header';
 import Nav from './Nav';
-import Main from "../layouts/Main";
+import Main from "./Main";
 
 export const TitleContext = createContext();
 

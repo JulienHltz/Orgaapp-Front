@@ -1,28 +1,28 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Titre from "./layouts/Titre";
+import Layout from "./layouts/Layout";
 
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Titre component="home" />}>
+        <Route exact path="/" element={<Layout component="home" />}>
         </Route>
 
-        <Route path="/connexion" element={<Titre component="login" />}>
+        <Route path="/connexion" element={<Layout component="login" />}>
         </Route>
 
-        <Route path="/materiel" element={<Titre component="equipement" />}>  
+        <Route path="/materiel" element={<Layout component="equipement" />}>  
         </Route>
 
-        <Route path="/groupes" element={<Titre component="band" />}> 
+        <Route path="/groupes" element={<Layout component="band" />}> 
         </Route>
 
-        <Route path="/evenements" element={<Titre component="event" />}>
+        <Route path="/evenements" element={<Layout component="event" />}>
         </Route>
 
-        <Route path="/utilisateurs" element={<Titre component="user" />}>  
+        <Route path="/utilisateurs" element={<Layout component="user" />}>  
         </Route>
 
       </Routes>
