@@ -18,6 +18,8 @@ header{
     color: $defaultpurple;
     height: 2rem;
     font-family: 'Orbitron';
+
+   
     
     
     div{
@@ -28,16 +30,21 @@ header{
         display: flex;
         align-items: center;
         justify-content: end;
+        font-size: 1.6rem;
         width: 30%;
     }
     #pagetitle{
         display: flex;
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         align-items: center;
-    i{
-        font-size: 1.2rem;
-        margin-left: 0.3rem;
-    }
+        gap: 0.5rem;
+
+        i{
+            align-items: center;
+            color: $defaultgrey;
+            font-size: 1.1rem;
+
+        }
     }
 
     #divminilogo{

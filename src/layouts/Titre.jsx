@@ -13,26 +13,32 @@ const Titre = ({component}) => {
         switch (component) {
             case 'home':
                 setTitle('Accueil');
+                document.title='Orgaapp - Accueil';
                 break;
             case 'login':
                 setTitle('Connexion');
+                document.title='Orgaapp - Connexion';
                 break;
             case 'equipement':
                 setTitle('Matos');
+                document.title='Orgaapp - Matos';
                 break;
             case 'band':
                 setTitle('Groupes');
+                document.title='Orgaapp - Groupes';
                 break;
             case 'event':
                 setTitle('Evénements');
+                document.title='Orgaapp - Evénements';
                 break;
             case 'user':
                 setTitle('Utilisateurs');
+                document.title='Orgaapp - Utilisateurs';
                 break;
             default:
                 break;
         }
-        document.title=title
+        // document.title=title
     }, [component]);
 
     return (
