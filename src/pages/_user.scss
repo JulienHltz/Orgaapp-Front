@@ -1,0 +1,23 @@
+@import "../assets/scss/utils/mixins";
+.container {
+    @include container;
+    .card {
+        @include card;
+        h4 {
+            @include secondary-font;
+        }
+        .mod-sup {
+            @include mod-sup;
+            .mod {
+                @include mod;
+            }
+            .sup {
+                @include sup;
+            }
+        }
+        .add {
+            width: 40%;
+            color: $add;
+        }
+    }
+}
