@@ -9,7 +9,10 @@ Modal.setAppElement(document.getElementById('root'));
 
 const Header = () => {
 
+  // Modal
   const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  // Header
   const title = useContext(TitleContext)
   
   const [icone, setIcone] = useState("");
@@ -36,6 +39,8 @@ const Header = () => {
     default:
       break;
   }}, [title]);
+
+  // Modal
   
   function openModal() {
     setIsOpen(true);
@@ -64,7 +69,18 @@ const Header = () => {
     </div>
     
     <div id="points">
-      <button onClick={openModal}><i className="fas fa-sign-out-alt"></i></button>
+      <button onClick={openModal}>
+      <Dropdown>
+  <Dropdown.Toggle variant="success" id="dropdown-basic">
+    Dropdown Button
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown><i className="fas fa-ellipsis-v"></i></button>
       <Modal 
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
