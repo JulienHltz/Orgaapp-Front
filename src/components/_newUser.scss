@@ -4,6 +4,7 @@
     @include secondary-font;
     @include container;
     h2 {
+        @include h2;
         margin-bottom: 4rem;
     }
     form {
@@ -14,14 +15,7 @@
             justify-self: right;
         }
         button {
-            grid-column: 1/3;
-            justify-self: center;
-            height: 2rem;
-            width: 50%;
-            background-color: $add;
-            border: 1px solid $add;
-            border-radius: 0.5rem;
-            margin-top: 2rem;
+            @include button-add;
         }
     }
 }
