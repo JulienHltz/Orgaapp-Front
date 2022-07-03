@@ -5,37 +5,50 @@ const Nav = () => {
     const navItems = [
         {
             "clsName": "fas fa-home",
-            "pathName": "/"
+            "pathName": "/",
+            "hideWhenLogged": false
         },
         {
             "clsName": "fas fa-key",
-            "pathName": "/connexion"
+            "pathName": "/connexion",
+            "hideWhenLogged": true
         },
         {
             "clsName": "fas fa-calendar-alt",
-            "pathName": "/evenements"
+            "pathName": "/evenements",
+            "hideWhenLogged": false
         },
         {
             "clsName": "fas fa-microphone-alt",
-            "pathName": "/materiel"
+            "pathName": "/materiel",
+            "hideWhenLogged": false
         },
         {
             "clsName": "fas fa-drum",
-            "pathName": "/groupes"
+            "pathName": "/groupes",
+            "hideWhenLogged": false
         },
         {
             "clsName":"fas fa-users",
-            "pathName": "/utilisateurs"
+            "pathName": "/utilisateurs",
+            "hideWhenLogged": false
         }
     ];
 
-    const ItemsComponents = ({ cls, pathName }) => <li><NavLink to={pathName} className={({ isActive }) => (isActive ? "link-active" : " ")}><i className={cls}></i></NavLink></li>;
+    const ItemsComponents = ({ cls, pathName, hideWhenLogged}) =>  {
+        let tmp = ((hideWhenLogged & window.localStorage.getItem('token') != null) ?
+         "" 
+         :
+           <li><NavLink to={pathName} className={({ isActive }) => (isActive ? "link-active" : " ")}><i className={cls}></i></NavLink></li>)
+    
+    return tmp 
+    }
 
     return (
         <nav>
             <ul>
                 {
-                    navItems.map(({clsName,pathName}, idx) => <ItemsComponents cls={clsName} pathName={pathName} key={idx}></ItemsComponents>)
+                    navItems.map(({clsName,pathName, hideWhenLogged}, idx) => ( <ItemsComponents cls={clsName} pathName={pathName} hideWhenLogged={hideWhenLogged} key={idx}></ItemsComponents>))
                 }
             </ul>
         </nav>
