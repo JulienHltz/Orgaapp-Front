@@ -3,6 +3,7 @@ import { TitleContext } from "./Layout";
 import "./_header.scss";
 import React from "react";
 import logomini from "../assets/images/logomini.jpg";
+
 import Dropdown from "react-bootstrap/Dropdown";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -20,8 +21,7 @@ const Header = () => {
     navigate('/connexion')
     setShow(false)
   }
-  //
-
+  
   const title = useContext(TitleContext);
 
   const [icone, setIcone] = useState("");
@@ -45,6 +45,7 @@ const Header = () => {
       case "Utilisateurs":
         setIcone("fas fa-users");
         break;
+
 
       default:
         break;
