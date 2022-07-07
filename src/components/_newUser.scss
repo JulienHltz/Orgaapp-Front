@@ -1,0 +1,21 @@
+@import "../assets/scss/utils/variables";
+@import "../assets/scss/utils/mixins";
+.container {
+    @include secondary-font;
+    @include container;
+    h2 {
+        @include h2;
+        margin-bottom: 4rem;
+    }
+    form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1rem;
+        label {
+            justify-self: right;
+        }
+        button {
+            @include button-add;
+        }
+    }
+}

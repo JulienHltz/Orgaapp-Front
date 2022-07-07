@@ -1,15 +1,11 @@
 // responsive
-
-$breakpoints : (
-    tablets : 768px,
-    desktop : 1024
-);
-
+$breakpoints: ( tablets: 768px, desktop: 1024, );
 // Colors
-
 $defaultpurple: #5d246b;
-$defaultgrey: #4B4556;
-$lightpurple: #EEE7EF;
-$black : black;
-$white : white;
-
+$defaultgrey: #4b4556;
+$lightpurple: #eee7ef;
+$black: black;
+$white: white;
+$sup: darkred;
+$mod: darkblue;
+$add: limegreen;

@@ -39,12 +39,64 @@ header{
             width: fit-content;
             height: fit-content;
             display: inline-block;
-
-            
             i{
                 font-size: 1.3rem;
                 color: $defaultpurple;
+                text-align: center;
             }
+        }
+
+        #dropdown-basic{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .dropdown{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .dropdown-menu{
+            border: black solid 0.3px;
+            background-color: $lightpurple;
+            height: fit-content;
+            padding: 1rem;
+            text-align: center;
+            
+
+            i{
+                color: black;
+                text-align: start;
+            }
+
+        .dropdown-item{
+            margin: 5px;
+            border: white;
+        }
+        }
+
+        .dropdown-item:first-child{
+            background-color: rgb(161, 49, 59);
+            color: white;
+            border-radius: 1rem;
+
+            
+        }
+
+        .dropdown-item:nth-child(2){
+            background-color: $defaultgrey;
+            color: white;
+            border-radius: 1rem;
+        }
+        .dropdown-item:nth-child(3){
+            background-color: $defaultgrey;
+            color: white;
+            border-radius: 1rem;
         }
 
     }
@@ -80,38 +132,28 @@ header{
     
 }
 
-    // Fenêtre Modale
+    // Fenêtre Modale Disconnect
 
-  .Modal{
+  .modal-content{
     display: flex;
     justify-content: center;
-    flex-direction: column;
     position: absolute;
-    gap: 3rem;
-    top: 30%;
-    left: 20%;
-    right: 20%;
-    bottom: 30%;
     background-color: $lightpurple;
     border: solid black 0.5px;
     border-radius: 0.2rem;
-    p{
+   
+    .modal-body{
+        font-family: 'Orbitron';
         text-align: center;
-        font-weight: bold;
+        margin-bottom: 2rem;
     }
-
-    #buttonDiv{
+    .modal-footer{
         display: flex;
         justify-content: center;
         gap: 3.5rem;
     }
 
-    p{
-        font-family: 'Orbitron';
-        font-size: 1rem;
-    }
-
-    #yes {
+    .btn-primary {
         background-color: rgb(39, 102, 23);
         color: whitesmoke;
         font-family: 'Orbitron';
@@ -119,28 +161,15 @@ header{
         width: 4rem;
 
     }
-    #no {
+    .btn-secondary {
         background-color: rgb(161, 49, 59);
         color: white;
         font-family: 'Orbitron';
         padding: 0.3rem;
         width: 4rem;
-
-        
-
     }
   }
 
-  .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color:rgba(0, 0, 0, 0.9);
-    // opacity: 0.2;
-    // background-color: rebeccapurple;
-  }
 
   
   
