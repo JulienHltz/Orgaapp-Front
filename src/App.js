@@ -1,30 +1,30 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import Titre from "./layouts/Titre";
-
+import Layout from "./layouts/Layout";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Titre component="home" />}>
-        </Route>
-
-        <Route path="/connexion" element={<Titre component="login" />}>
-        </Route>
-
-        <Route path="/materiel" element={<Titre component="equipement" />}>  
-        </Route>
-
-        <Route path="/groupes" element={<Titre component="band" />}> 
-        </Route>
-
-        <Route path="/evenements" element={<Titre component="event" />}>
-        </Route>
-
-        <Route path="/utilisateurs" element={<Titre component="user" />}>  
-        </Route>
-
+        <Route exact path="/" element={<Layout component="home" />}></Route>
+        <Route path="/connexion" element={<Layout component="login" />}></Route>
+        <Route
+          path="/materiel"
+          element={<Layout component="equipement" />}
+        ></Route>
+        <Route path="/groupes" element={<Layout component="band" />}></Route>
+        <Route
+          path="/evenements"
+          element={<Layout component="event" />}
+        ></Route>
+        <Route
+          path="/utilisateurs"
+          element={<Layout component="user" />}
+        ></Route>
+        <Route
+          path="/nouvel-utilisateur"
+          element={<Layout component="newuser" />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
