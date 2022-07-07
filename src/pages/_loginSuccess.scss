@@ -1,0 +1,14 @@
+h3 {
+  font-family: "orbitron";
+  font-size: x-large;
+  font-weight: bold;
+  letter-spacing: 0.2rem;
+  color: rgba(0, 0, 0, 0.678);
+  transform: scaleY(140%);
+  text-shadow: 2px 2px 3px #5d246b;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  animation: translate 2s ease-in forwards;
+  transform: translateY(-250%);
+  opacity: 0;
+}

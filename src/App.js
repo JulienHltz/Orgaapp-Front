@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import Layout from "./layouts/Layout";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
