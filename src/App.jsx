@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from './layouts/Layout'
-import './assets/scss/utils/reset.scss'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const App = () => {
@@ -25,6 +24,10 @@ const App = () => {
         <Route
           path='/nouvel-utilisateur'
           element={<Layout component='newuser' />}
+        ></Route>
+        <Route
+          path='/nouveau-matos'
+          element={<Layout component='newequipment' />}
         ></Route>
       </Routes>
     </BrowserRouter>

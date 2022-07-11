@@ -34,7 +34,6 @@ const schema = yup.object().shape({
     .string()
     .required('Vous devez entrer un mot de passe !')
     .min(5, 'Minimum 5 caractères !')
-    .max(16)
 })
 
 const NewUser = () => {
@@ -82,8 +81,8 @@ const NewUser = () => {
 
           <label htmlFor='role'>role</label>
           <select name='role' id='roles' {...register('roles')}>
-            <option value='User'>User</option>
-            <option value='Admin'>Admin</option>
+            <option value='ROLE_USER'>User</option>
+            <option value='ROLE_ADMIN'>Admin</option>
           </select>
           {errors.roles && <span>{errors.roles.message}</span>}
 
@@ -92,7 +91,7 @@ const NewUser = () => {
           {errors.email && <span>{errors.email.message}</span>}
 
           <label htmlFor='password'>Mot de passe :</label>
-          <input type='text' id='password' {...register('password')} />
+          <input type='password' id='password' {...register('password')} />
           {errors.password && <span>{errors.password.message}</span>}
 
           <button type='submit' disabled={isSubmitting}>
