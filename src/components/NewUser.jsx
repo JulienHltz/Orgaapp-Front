@@ -7,9 +7,34 @@ import * as yup from 'yup'
 const schema = yup.object().shape({
   username: yup
     .string()
-    .required()
-    .min(3, 'Minimum 3 caracteres !!')
-    .max(15)
+    .required("Le nom d'utilisateur est obligatoire !")
+    .min(3, 'Minimum 3 caracteres !')
+    .max(15),
+
+  firstname: yup
+    .string()
+    .required('Le prénom est obligatoire')
+    .min(3, 'Minimum 3 caracteres !')
+    .max(15),
+
+  lastname: yup
+    .string()
+    .required('Le nom est obligatoire !')
+    .min(3, 'Minimum 3 caracteres !')
+    .max(15),
+
+  roles: yup.string().required(),
+
+  email: yup
+    .string()
+    .email('Entrez un format de mail valid !')
+    .required("L'ajout d'un mail est obligatoire !"),
+
+  password: yup
+    .string()
+    .required('Vous devez entrer un mot de passe !')
+    .min(5, 'Minimum 5 caractères !')
+    .max(16)
 })
 
 const NewUser = () => {
@@ -46,19 +71,30 @@ const NewUser = () => {
           <label htmlFor='username'>Nom d'utilisateur :</label>
           <input type='text' id='username' {...register('username')} />
           {errors.username && <span>{errors.username.message}</span>}
+
           <label htmlFor='firstname'>Prénom :</label>
           <input type='text' id='firstname' {...register('firstname')} />
+          {errors.firstname && <span>{errors.firstname.message}</span>}
+
           <label htmlFor='lastname'>Nom :</label>
           <input type='text' id='lastname' {...register('lastname')} />
+          {errors.lastname && <span>{errors.lastname.message}</span>}
+
           <label htmlFor='role'>role</label>
           <select name='role' id='roles' {...register('roles')}>
             <option value='User'>User</option>
             <option value='Admin'>Admin</option>
           </select>
+          {errors.roles && <span>{errors.roles.message}</span>}
+
           <label htmlFor='email'>Email :</label>
           <input type='mail' id='email' {...register('email')} />
+          {errors.email && <span>{errors.email.message}</span>}
+
           <label htmlFor='password'>Mot de passe :</label>
           <input type='text' id='password' {...register('password')} />
+          {errors.password && <span>{errors.password.message}</span>}
+
           <button type='submit' disabled={isSubmitting}>
             Ajouter
           </button>

@@ -1,10 +1,7 @@
-import "./_loginSuccess.scss";
+import './_loginSuccess.scss'
 
 const LoginSuccess = () => {
-    return (
-        <h3>Connexion Réussie !</h3>
-
-    );
+  return <h3 className='success-login'>Connexion Réussie !</h3>
 }
 
-export default LoginSuccess;
+export default LoginSuccess
