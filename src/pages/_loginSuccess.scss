@@ -1,12 +1,22 @@
 @import "../assets/scss/utils/mixins";
-h3.success-login {
-    @include principal-font;
-    font-size: 4rem;
+    
+    h3.success-login {
+        @include principal-font;
+    font-size: 1.5rem;
+    // border: solid;
+    background-color: #5d246b;
+    text-align: center;
+    line-height: 3rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 80%;
+    margin: 0 auto;
     font-weight: bold;
     letter-spacing: 0.2rem;
-    color: rgba(0, 0, 0, 0.678);
+    // color: rgba(0, 0, 0, 0.678);
+    color: white;
     // transform: scaleY(140%);
-    text-shadow: 2px 2px 3px #5d246b;
+    text-shadow: 2px 4px 3px #100812;
     text-transform: uppercase;
     animation: translate 2s ease-in forwards;
     transform: translateY(-250%);

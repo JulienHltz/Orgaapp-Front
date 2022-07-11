@@ -57,7 +57,7 @@ const NewUser = () => {
           <select name='etat' id='etat' {...register('etat')}>
             <option value='#'>-- Choisir --</option>
             <option value='GOOD'>Bon Etat</option>
-            <option value='BAD'>Endommager</option>
+            <option value='BAD'>Endommagé</option>
           </select>
           {errors.roles && <span>{errors.roles.message}</span>}
 
