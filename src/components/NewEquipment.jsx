@@ -5,16 +5,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
 const schema = yup.object().shape({
-  equipmentname: yup
+  name: yup
     .string()
-    .required("Le nom d'utilisateur est obligatoire !")
+    .required('Ce champ est requis !')
     .min(3, 'Minimum 3 caracteres !')
     .max(15),
 
-  roles: yup.string().required()
+  health: yup.string().required(),
+
+  inStock: yup.boolean().required()
 })
 
-const NewUser = () => {
+const NewEquipment = () => {
+  const token = localStorage.getItem('token')
+
   const {
     register,
     handleSubmit,
@@ -28,10 +32,19 @@ const NewUser = () => {
   const { isSubmitting } = formState
 
   const onSubmit = data => {
-    data.roles = [data.roles]
+    data.health = '/api/healths/1'
+    data.status = 'wtf'
+    data.createdAt = '2022-07-12T15:18:40.868Z'
+    data.updatedAt = '2022-07-12T15:18:40.868Z'
+    data.categorie = '/api/categories/1'
+
     console.log(data)
     axios
-      .post('http://localhost:5050/api/users', data)
+      .post('http://localhost:5050/api/materiels', data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then(response => {
         console.log(response)
       })
@@ -45,16 +58,12 @@ const NewUser = () => {
       <div className='container'>
         <h2>Ajouter du matos !</h2>
         <form action='' onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor='equipmentname'>Nom du matos :</label>
-          <input
-            type='text'
-            id='equipmentname'
-            {...register('equipmentname')}
-          />
+          <label htmlFor='name'>Nom du matos :</label>
+          <input type='text' id='name' name='name' {...register('name')} />
           {errors.equipmentname && <span>{errors.equipmentname.message}</span>}
 
-          <label htmlFor='etat'>Etat :</label>
-          <select name='etat' id='etat' {...register('etat')}>
+          <label htmlFor='health'>Etat :</label>
+          <select name='health' id='health' {...register('health')}>
             <option value='#'>-- Choisir --</option>
             <option value='GOOD'>Bon Etat</option>
             <option value='BAD'>Endommagé</option>
@@ -63,10 +72,22 @@ const NewUser = () => {
 
           <label htmlFor='stock'>En Stock :</label>
           <div className='stock'>
-            <input type='checkbox' id='yes' name='yes' value='yes' />
+            <input
+              type='radio'
+              id='yes'
+              name='yes'
+              value={true}
+              {...register('inStock')}
+            />
             <label htmlFor='yes'>Oui</label>
 
-            <input type='checkbox' id='no' name='no' value='no' />
+            <input
+              type='radio'
+              id='no'
+              name='yes'
+              value={false}
+              {...register('inStock')}
+            />
             <label htmlFor='no'>Non</label>
           </div>
           <button type='submit' disabled={isSubmitting}>
@@ -78,4 +99,4 @@ const NewUser = () => {
   )
 }
 
-export default NewUser
+export default NewEquipment

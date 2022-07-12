@@ -3,6 +3,9 @@ import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+// import bcrypt from 'bcryptjs'
+
+// const salt = bcrypt.genSaltSync(10)
 
 const schema = yup.object().shape({
   username: yup
@@ -37,6 +40,8 @@ const schema = yup.object().shape({
 })
 
 const NewUser = () => {
+  const token = localStorage.getItem('token')
+
   const {
     register,
     handleSubmit,
@@ -52,14 +57,30 @@ const NewUser = () => {
   const onSubmit = data => {
     data.roles = [data.roles]
     console.log(data)
+
+    // const hashedPassword = bcrypt.hashSync(password, '')
+
     axios
-      .post('http://localhost:5050/api/users', data)
+      .post('http://localhost:5050/api/users', data, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       .then(response => {
         console.log(response)
       })
       .catch(e => {
         console.log(e.code)
       })
+
+    // headers: {
+    //   Accept : 'application/json',
+    //   'Content Type': 'application/json',
+    // },
+    // body: JSON.stringify({
+    //   email: email,
+    //   password: hashedPassword,
+    // })
   }
 
   return (
@@ -79,7 +100,7 @@ const NewUser = () => {
           <input type='text' id='lastname' {...register('lastname')} />
           {errors.lastname && <span>{errors.lastname.message}</span>}
 
-          <label htmlFor='role'>role</label>
+          <label htmlFor='role'>Rôle</label>
           <select name='role' id='roles' {...register('roles')}>
             <option value='ROLE_USER'>User</option>
             <option value='ROLE_ADMIN'>Admin</option>

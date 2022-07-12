@@ -24,7 +24,7 @@ const LoginForm = () => {
         setIsConnected(true)
         setTimeout(() => {
           navigate('/')
-        }, 500000000)
+        }, 3000)
       })
       .catch(e => {
         console.log(e.code)
