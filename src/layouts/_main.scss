@@ -1,17 +1,16 @@
 @import "../assets/scss/utils/variables";
-
-body{
+body {
     display: flex;
     height: 100vh;
     align-items: center;
     justify-content: center;
-    border: solid;  
-
-    main{
+    main {
         display: flex;
+        overflow-y: scroll;
         align-items: center;
-        // height: calc(100vh - 10rem );
-        // border: solid;
+        max-height: 75vh;
+        min-height: 75vh;
+        border: dotted 5px black;
+        background-color: yellow;
     }
 }
-

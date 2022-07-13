@@ -29,6 +29,14 @@ const App = () => {
           path='/nouveau-matos'
           element={<Layout component='newequipment' />}
         ></Route>
+        <Route
+          path='/nouvel-etat'
+          element={<Layout component='newhealth' />}
+        ></Route>
+        <Route
+          path='/nouvelle-category'
+          element={<Layout component='newcategory' />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   )

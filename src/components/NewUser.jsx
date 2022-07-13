@@ -1,11 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import './_newUser.scss'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-// import bcrypt from 'bcryptjs'
-
-// const salt = bcrypt.genSaltSync(10)
 
 const schema = yup.object().shape({
   username: yup
@@ -33,7 +31,7 @@ const schema = yup.object().shape({
     .email('Entrez un format de mail valid !')
     .required("L'ajout d'un mail est obligatoire !"),
 
-  password: yup
+  plainPassword: yup
     .string()
     .required('Vous devez entrer un mot de passe !')
     .min(5, 'Minimum 5 caractères !')
@@ -41,6 +39,8 @@ const schema = yup.object().shape({
 
 const NewUser = () => {
   const token = localStorage.getItem('token')
+
+  const navigate = useNavigate()
 
   const {
     register,
@@ -58,8 +58,6 @@ const NewUser = () => {
     data.roles = [data.roles]
     console.log(data)
 
-    // const hashedPassword = bcrypt.hashSync(password, '')
-
     axios
       .post('http://localhost:5050/api/users', data, {
         headers: {
@@ -68,19 +66,11 @@ const NewUser = () => {
       })
       .then(response => {
         console.log(response)
+        navigate('/utilisateurs')
       })
       .catch(e => {
         console.log(e.code)
       })
-
-    // headers: {
-    //   Accept : 'application/json',
-    //   'Content Type': 'application/json',
-    // },
-    // body: JSON.stringify({
-    //   email: email,
-    //   password: hashedPassword,
-    // })
   }
 
   return (
@@ -111,9 +101,13 @@ const NewUser = () => {
           <input type='mail' id='email' {...register('email')} />
           {errors.email && <span>{errors.email.message}</span>}
 
-          <label htmlFor='password'>Mot de passe :</label>
-          <input type='password' id='password' {...register('password')} />
-          {errors.password && <span>{errors.password.message}</span>}
+          <label htmlFor='plainpassword'>Mot de passe :</label>
+          <input
+            type='password'
+            id='plainPassword'
+            {...register('plainPassword')}
+          />
+          {errors.plainPassword && <span>{errors.plainPassword.message}</span>}
 
           <button type='submit' disabled={isSubmitting}>
             Ajouter

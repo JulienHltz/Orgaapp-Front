@@ -4,6 +4,13 @@ const Equipement = () => {
   return (
     <>
       <div className='container'>
+        <NavLink to='/nouvelle-category'>
+          <p>Ajouter une catégorie de matériel</p>
+        </NavLink>
+        <NavLink to='/nouvel-etat'>
+          <p>Ajouter un état</p>
+        </NavLink>
+
         <div className='card'>
           <h4>Nom Matos</h4>
           <div className='etat'></div>

@@ -25,12 +25,14 @@
 @mixin container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
 }
 
 // Card
 @mixin card {
+    width: 15rem;
     border: 2px solid $defaultgrey;
     border-radius: 0.5rem;
     padding: 2rem;
