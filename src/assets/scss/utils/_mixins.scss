@@ -32,10 +32,10 @@
 
 // Card
 @mixin card {
-    width: 15rem;
+    width: 35vh;
     border: 2px solid $defaultgrey;
     border-radius: 0.5rem;
-    padding: 2rem;
+    padding: 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;

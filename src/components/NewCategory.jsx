@@ -36,7 +36,7 @@ const NewCategory = () => {
 
     console.log(data)
     axios
-      .post('http://localhost:5050/api/healths', data, {
+      .post('http://localhost:5050/api/categories', data, {
         headers: {
           Authorization: `Bearer ${token}`
         }

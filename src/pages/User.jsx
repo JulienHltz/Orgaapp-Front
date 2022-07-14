@@ -29,7 +29,8 @@ const User = () => {
       })
   }, [])
   return (
-    <div className='container'>
+    <>
+      {/* <div className='container'> */}
       {userList.map((user, index) => (
         <UserCard key={index} user={user} />
       ))}
@@ -37,7 +38,8 @@ const User = () => {
       <NavLink to='/nouvel-utilisateur'>
         <i className='fas fa-plus-circle fa-3x add'></i>
       </NavLink>
-    </div>
+      {/* </div> */}
+    </>
   )
 }
 
