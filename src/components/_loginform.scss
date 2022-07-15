@@ -1,73 +1,57 @@
 @import "../assets/scss/utils/variables";
-
-
-#loginContainer{
-font-family: "orbitron";
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-// height: 100%;
-gap: 2.5rem;
-
-
-
-.imgLoginContainer{
-    width: 20rem;
-    height: 7rem;
-    animation: translate 1.2s ease-in forwards;
-    transform: translateY(-80%);
-    opacity: 0;
-    z-index: -1;
-
-       
-
+#loginContainer {
+    font-family: "orbitron";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // height: 100%;
+    gap: 2.5rem;
+    .imgLoginContainer {
+        width: 20rem;
+        height: 7rem;
+        animation: translate 1.2s ease-in forwards;
+        transform: translateY(-80%);
+        opacity: 0;
+        z-index: -1;
         @keyframes translate {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-    img{
-        background-size: cover;
+        img {
+            background-size: cover;
+        }
     }
-
-
-}
-
-#loginFormContainer{
-    border: solid 1px $black;
-    border-radius: 0.5rem;
-    display: flex;
-    background-color: $lightpurple;
-    padding: 2rem 5rem 2rem 5rem;
-    // align-items: center;
-    width: 90%;
-}
-    form{
-    display: flex;
-    flex-direction: column;
-
-    label{
-        margin: 1rem;
-        text-align: center;
-    }
-
-    input{
-        text-align: center;
-    }
-
-    button{ 
-        
-        background-color: $defaultpurple;
-        color: $white;
-        font-family: "orbitron";
+    #loginFormContainer {
+        border: solid 1px $black;
         border-radius: 0.5rem;
-        width: 75%;
-        margin: 2.5rem auto 0 auto;
-        padding: 0.3rem;
-        cursor: pointer;
+        display: flex;
+        background-color: $lightpurple;
+        padding: 2rem 5rem 2rem 5rem;
+        // align-items: center;
+        width: 90%;
     }
-    }   
+    form {
+        display: flex;
+        flex-direction: column;
+        label {
+            margin: 1rem;
+            text-align: center;
+        }
+        input {
+            text-align: center;
+        }
+        button {
+            background-color: $defaultpurple;
+            color: $white;
+            font-family: "orbitron";
+            border-radius: 0.5rem;
+            width: 75%;
+            margin: 2.5rem auto 0 auto;
+            padding: 0.3rem;
+            cursor: pointer;
+        }
+    }
 }

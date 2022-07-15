@@ -40,6 +40,10 @@ header {
                 text-align: center;
             }
         }
+        .showdropdown:focus,
+        .dropdown:focus {
+            border: none;
+        }
         #dropdown-basic {
             position: absolute;
             display: flex;
@@ -54,9 +58,10 @@ header {
         }
         .dropdown-menu {
             border: black solid 0.3px;
-            background-color: $lightpurple;
+            background-color: rgb(161, 49, 59);
+            border: solid black 0.5px;
             height: fit-content;
-            padding: 1rem;
+            padding: 0;
             text-align: center;
             i {
                 color: black;
@@ -65,22 +70,14 @@ header {
             .dropdown-item {
                 margin: 5px;
                 border: white;
+                width: 90%;
+                text-align: center;
             }
         }
         .dropdown-item:first-child {
             background-color: rgb(161, 49, 59);
             color: white;
-            border-radius: 1rem;
-        }
-        .dropdown-item:nth-child(2) {
-            background-color: $defaultgrey;
-            color: white;
-            border-radius: 1rem;
-        }
-        .dropdown-item:nth-child(3) {
-            background-color: $defaultgrey;
-            color: white;
-            border-radius: 1rem;
+            // border-radius: 1rem;
         }
     }
     #pagetitle {

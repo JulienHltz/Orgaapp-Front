@@ -1,5 +1,7 @@
 import './_newUser.scss'
 import axios from 'axios'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -13,11 +15,16 @@ const schema = yup.object().shape({
 
   health: yup.string().required(),
 
+  category: yup.string().required(),
+
   inStock: yup.boolean().required()
 })
 
 const NewEquipment = () => {
   const token = localStorage.getItem('token')
+
+  const [healthSelect, setHealthSelect] = useState([])
+  const [categorySelect, setCategorySelect] = useState([])
 
   const {
     register,
@@ -32,13 +39,14 @@ const NewEquipment = () => {
   const { isSubmitting } = formState
 
   const onSubmit = data => {
-    data.health = '/api/healths/1'
+    // data.health = '/api/healths/1'
     data.status = 'wtf'
     data.createdAt = '2022-07-12T15:18:40.868Z'
     data.updatedAt = '2022-07-12T15:18:40.868Z'
-    data.categorie = '/api/categories/1'
+    // data.categorie = '/api/categories/1'
 
     console.log(data)
+
     axios
       .post('http://localhost:5050/api/materiels', data, {
         headers: {
@@ -53,6 +61,32 @@ const NewEquipment = () => {
       })
   }
 
+  useEffect(() => {
+    axios
+      .all([
+        axios.get(`http://localhost:5050/api/healths`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }),
+        axios.get(`http://localhost:5050/api/categories`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+      ])
+      .then(res => {
+        console.log(res)
+        setHealthSelect(res[0].data['hydra:member'])
+        setCategorySelect(res[1].data['hydra:member'])
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
       <div className='container'>
@@ -65,10 +99,24 @@ const NewEquipment = () => {
           <label htmlFor='health'>Etat :</label>
           <select name='health' id='health' {...register('health')}>
             <option value='#'>-- Choisir --</option>
-            <option value='GOOD'>Bon Etat</option>
-            <option value='BAD'>Endommagé</option>
+            {healthSelect.map((health, index) => (
+              <option key={index} health={health} value={health.name}>
+                {health.name}
+              </option>
+            ))}
           </select>
-          {errors.roles && <span>{errors.roles.message}</span>}
+          {/* {errors.health && <span>{errors.health.message}</span>} */}
+
+          <label htmlFor='category'>Catégorie :</label>
+          <select name='category' id='category' {...register('category')}>
+            <option value='#'>-- Choisir --</option>
+            {categorySelect.map((category, index) => (
+              <option key={index} health={category} value={category.name}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+          {/* {errors.category && <span>{errors.category.message}</span>} */}
 
           <label htmlFor='stock'>En Stock :</label>
           <div className='stock'>

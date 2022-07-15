@@ -75,14 +75,6 @@ const Header = () => {
                   <i className='fas fa-sign-out-alt'></i>
                   Déconnexion
                 </Dropdown.Item>
-                <Dropdown.Item onClick={handleShow}>
-                  <i className='fas fa-plus-circle'></i>
-                  Another action
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleShow}>
-                  <i className='fas fa-minus-circle'></i>
-                  Something else
-                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           )}
