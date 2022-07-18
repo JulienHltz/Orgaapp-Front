@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { useNavigate } from 'react-router-dom'
 
 const schema = yup.object().shape({
   name: yup
@@ -16,18 +15,16 @@ const schema = yup.object().shape({
 
   health: yup.string().required(),
 
-  categorie: yup.string().required(),
+  category: yup.string().required(),
 
   inStock: yup.boolean().required()
 })
 
-const NewEquipment = () => {
+const ModEquipment = ({ user, onSubmit }) => {
   const token = localStorage.getItem('token')
 
-  const navigate = useNavigate()
-
   const [healthSelect, setHealthSelect] = useState([])
-  const [categorieSelect, setCategorieSelect] = useState([])
+  const [categorySelect, setCategorySelect] = useState([])
 
   const {
     register,
@@ -36,32 +33,27 @@ const NewEquipment = () => {
     formState: { errors }
   } = useForm({
     mode: 'onTouched',
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
+    defaultValues: {
+      name: user.name,
+      health: user.health,
+      category: user.categorie,
+      stock: user.inStock
+    }
   })
 
   const { isSubmitting } = formState
 
-  const onSubmit = data => {
-    // data.createdAt = '2022-07-12T15:18:40.868Z'
-    // data.updatedAt = '2022-07-12T15:18:40.868Z'
-    // data.status = 'wtf'
-
+  const modifEquipment = data => {
+    onSubmit(data)
     console.log(data)
-
-    axios
-      .post('http://localhost:5050/api/materiels', data, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      })
-      .then(response => {
-        console.log(response)
-        navigate('/materiel')
-      })
-      .catch(e => {
-        console.log(e.code)
-      })
   }
+
+  // const onSubmit = data => {
+  //   // data.createdAt = '2022-07-12T15:18:40.868Z'
+  //   // data.updatedAt = '2022-07-12T15:18:40.868Z'
+  //   console.log(data)
+  // }
 
   useEffect(() => {
     axios
@@ -80,7 +72,7 @@ const NewEquipment = () => {
       .then(res => {
         console.log(res)
         setHealthSelect(res[0].data['hydra:member'])
-        setCategorieSelect(res[1].data['hydra:member'])
+        setCategorySelect(res[1].data['hydra:member'])
       })
       .catch(error => {
         console.log(error)
@@ -92,8 +84,8 @@ const NewEquipment = () => {
   return (
     <>
       <div className='container'>
-        <h2>Ajouter du matos !</h2>
-        <form action='' onSubmit={handleSubmit(onSubmit)}>
+        <h2>Modifier du matériel</h2>
+        <form action='' onSubmit={handleSubmit(modifEquipment)}>
           <label htmlFor='name'>Nom du matos :</label>
           <input type='text' id='name' name='name' {...register('name')} />
           {errors.equipmentname && <span>{errors.equipmentname.message}</span>}
@@ -102,23 +94,23 @@ const NewEquipment = () => {
           <select name='health' id='health' {...register('health')}>
             <option value='#'>-- Choisir --</option>
             {healthSelect.map((health, index) => (
-              <option key={index} health={health} value={health['@id']}>
+              <option key={index} health={health} value={health.name}>
                 {health.name}
               </option>
             ))}
           </select>
           {/* {errors.health && <span>{errors.health.message}</span>} */}
 
-          <label htmlFor='categorie'>Catégorie :</label>
-          <select name='categorie' id='categorie' {...register('categorie')}>
+          <label htmlFor='category'>Catégorie :</label>
+          <select name='category' id='category' {...register('category')}>
             <option value='#'>-- Choisir --</option>
-            {categorieSelect.map((categorie, index) => (
-              <option key={index} health={categorie} value={categorie['@id']}>
-                {categorie.name}
+            {categorySelect.map((category, index) => (
+              <option key={index} health={category} value={category.name}>
+                {category.name}
               </option>
             ))}
           </select>
-          {/* {errors.categorie && <span>{errors.categorie.message}</span>} */}
+          {/* {errors.category && <span>{errors.category.message}</span>} */}
 
           <label htmlFor='stock'>En Stock :</label>
           <div className='stock'>
@@ -141,7 +133,7 @@ const NewEquipment = () => {
             <label htmlFor='no'>Non</label>
           </div>
           <button type='submit' disabled={isSubmitting}>
-            Ajouter
+            Modifier
           </button>
         </form>
       </div>
@@ -149,4 +141,4 @@ const NewEquipment = () => {
   )
 }
 
-export default NewEquipment
+export default ModEquipment

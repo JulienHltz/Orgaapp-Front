@@ -21,6 +21,11 @@ const LoginForm = () => {
       })
       .then(response => {
         console.log(response.data)
+        // let infosConnec = {
+        //   token: response.data.token,
+        //   timestamp: Date.now()
+        // }
+        // window.localStorage.setItem('infosConnec', infosConnec)
         window.localStorage.setItem('token', response.data.token)
         setIsConnected(true)
         setTimeout(() => {

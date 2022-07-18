@@ -1,56 +1,117 @@
 import { NavLink } from 'react-router-dom'
+import Loader from '../components/Loader'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
+import EquipmentCard from '../components/EquipmentCard'
+import ModEquipment from '../components/ModEquipment'
+import './_user.scss'
 
 const Equipement = () => {
+  const token = localStorage.getItem('token')
+  const [isLoading, setIsLoading] = useState(true)
+  const [equipmentList, setEquipmentList] = useState([])
+  const [equipmentToModif, setEquipmentToModif] = useState(-1)
+
+  const delEquipment = (id, index) => {
+    setIsLoading(true)
+
+    axios
+      .delete(`http://localhost:5050${id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(res => {
+        equipmentList.splice(index, 1)
+
+        setIsLoading(false)
+      })
+      .catch(error => {
+        // console.log(error)
+        setIsLoading(false)
+      })
+  }
+
+  const enableModif = index => {
+    setEquipmentToModif(index)
+  }
+
+  const modifEquipment = data => {
+    setIsLoading(true)
+
+    axios
+      .put(
+        `http://localhost:5050${equipmentList[equipmentToModif]['@id']}`,
+        data,
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      )
+      .then(res => {
+        let equipmentTmp = equipmentList
+        equipmentTmp[equipmentToModif] = res.data
+        setEquipmentList(equipmentTmp)
+
+        setEquipmentToModif(-1)
+        setIsLoading(false)
+      })
+      .catch(error => {
+        console.log(error)
+        setEquipmentToModif(-1)
+        setIsLoading(false)
+      })
+  }
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5050/api/materiels`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => {
+        // console.log(res.data)
+        // console.log(res.data['hydra:member'])
+
+        setEquipmentList(res.data['hydra:member'])
+        setIsLoading(false)
+      })
+      .catch(error => {
+        // console.log(error)
+      })
+  }, [])
+
   return (
     <>
       <div className='container'>
-        <NavLink to='/nouvelle-category'>
-          <p>Ajouter une catégorie de matériel</p>
-        </NavLink>
-        <NavLink to='/nouvel-etat'>
-          <p>Ajouter un état</p>
-        </NavLink>
-
-        <div className='card'>
-          <h4>Nom Matos</h4>
-          <div className='etat'></div>
-          <div className='created-date'>
-            <p>Créé le 05/05/2006</p>
-          </div>
-          <div className='modificated-date'>
-            <p>Modifié le 04/11/2013</p>
-          </div>
-          <ul className='mod-sup'>
-            <li className='mod'>
-              <i className='fas fa-edit'></i>
-            </li>
-            <li className='sup'>
-              <i className='fas fa-trash-alt'></i>
-            </li>
-          </ul>
-        </div>
-        <div className='card'>
-          <h4>Nom Matos</h4>
-          <div className='etat'></div>
-          <div className='created-date'>
-            <p>Créé le 15/07/2019</p>
-          </div>
-          <div className='modificated-date'>
-            <p>Modifié le 06/12/2020</p>
-          </div>
-          <ul className='mod-sup'>
-            <li className='mod'>
-              <i className='fas fa-edit'></i>
-            </li>
-            <li className='sup'>
-              <i className='fas fa-trash-alt'></i>
-            </li>
-          </ul>
-        </div>
-        <NavLink to='/nouveau-matos'>
-          <i className='fas fa-plus-circle fa-2x add'></i>
-        </NavLink>
+        {isLoading ? (
+          <Loader />
+        ) : equipmentToModif === -1 ? (
+          <>
+            <NavLink to='/nouveau-matos'>
+              <i className='fas fa-plus-circle fa-2x add'></i>
+            </NavLink>
+            {equipmentList.map((user, index) => (
+              <EquipmentCard
+                key={index}
+                index={index}
+                user={user}
+                onClick={delEquipment}
+                modif={enableModif}
+              />
+            ))}
+          </>
+        ) : (
+          <ModEquipment
+            user={equipmentList[equipmentToModif]}
+            onSubmit={modifEquipment}
+          />
+        )}
       </div>
+      <NavLink to='/nouvelle-category'>
+        <p>Ajouter une catégorie de matériel</p>
+      </NavLink>
+      <NavLink to='/nouvel-etat'>
+        <p>Ajouter un état</p>
+      </NavLink>
     </>
   )
 }
