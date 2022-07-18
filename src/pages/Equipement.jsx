@@ -48,7 +48,7 @@ const Equipement = () => {
           </ul>
         </div>
         <NavLink to='/nouveau-matos'>
-          <i className='fas fa-plus-circle fa-3x add'></i>
+          <i className='fas fa-plus-circle fa-2x add'></i>
         </NavLink>
       </div>
     </>

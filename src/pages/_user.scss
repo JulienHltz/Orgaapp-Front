@@ -1,12 +1,16 @@
 @import "../assets/scss/utils/mixins";
 .container {
     // @include container;
-    height: 75vh;
-    overflow: auto;
+    // height: 75vh;
+    // overflow: auto;
     .card {
         @include card;
         h4 {
             @include secondary-font;
+        }
+        h6 {
+            font-size: x-small;
+            justify-self: end;
         }
         .mod-sup {
             @include mod-sup;
@@ -16,10 +20,6 @@
             .sup {
                 @include sup;
             }
-        }
-        .add {
-            width: 40%;
-            color: $add;
         }
         .etat {
             width: 1rem;
@@ -44,4 +44,11 @@
             grid-row: 3;
         }
     }
+}
+
+.add {
+    color: $add;
+    position: fixed;
+    top: 50%;
+    right: 1.5rem;
 }

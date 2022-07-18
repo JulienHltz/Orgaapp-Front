@@ -20,6 +20,7 @@ const LoginForm = () => {
         password: userPassword
       })
       .then(response => {
+        console.log(response.data)
         window.localStorage.setItem('token', response.data.token)
         setIsConnected(true)
         setTimeout(() => {
