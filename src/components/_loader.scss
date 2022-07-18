@@ -1,0 +1,26 @@
+@import "../assets/scss/utils/variables";
+@import "../assets/scss/utils/mixins";
+.container {
+    @include container;
+    .square {
+        align-items: center;
+        height: 7rem;
+        width: 7rem;
+        border-radius: 5rem;
+        border: solid 3px white;
+        background-color: $defaultpurple;
+        animation: animate 3s linear infinite;
+        transform: translateY(-50%);
+        @keyframes animate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        img {
+            filter: brightness(0) invert(1);
+        }
+    }
+}

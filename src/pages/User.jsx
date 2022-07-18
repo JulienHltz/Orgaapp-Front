@@ -1,39 +1,48 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom'
 
-import "./_user.scss";
+import './_user.scss'
+import Loader from '../components/Loader'
+import UserCard from '../components/UserCard'
+import { useEffect } from 'react'
+import axios from 'axios'
+import { useState } from 'react'
 
 const User = () => {
+  const token = localStorage.getItem('token')
+  const [isLoading, setIsLoading] = useState(true)
+  const [userList, setUserList] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5050/api/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res => {
+        // console.log(res.data['hydra:member'])
+        // setUserList((userList)=>[...userList, res.data['hydra:member']])
+        setUserList(res.data['hydra:member'])
+        setIsLoading(false)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }, [])
   return (
     <>
-      <div className="container">
-        <div className="card">
-          <h4>Nom User</h4>
-          <ul className="mod-sup">
-            <li className="mod">
-              <i class="fas fa-edit"></i>
-            </li>
-            <li className="sup">
-              <i class="fas fa-trash-alt"></i>
-            </li>
-          </ul>
-        </div>
-        <div className="card">
-          <h4>Nom User</h4>
-          <ul className="mod-sup">
-            <li className="mod">
-              <i class="fas fa-edit"></i>
-            </li>
-            <li className="sup">
-              <i class="fas fa-trash-alt"></i>
-            </li>
-          </ul>
-        </div>
-        <NavLink to="/nouvel-utilisateur">
-          <i class="fas fa-plus-circle fa-3x add"></i>
+      <div className='container'>
+        <NavLink to='/nouvel-utilisateur'>
+          <i className='fas fa-plus-circle fa-2x add'></i>
         </NavLink>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          userList.map((user, index) => <UserCard key={index} user={user} />)
+        )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default User;
+export default User

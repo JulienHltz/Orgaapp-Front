@@ -1,6 +1,5 @@
 @import "../assets/scss/utils/variables";
-
-header{
+header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,160 +16,124 @@ header{
     background-color: white;
     color: $defaultpurple;
     height: 2rem;
-    font-family: 'Orbitron';
-
-   
-    
-    
-    div{
+    font-family: "Orbitron";
+    z-index: 10;
+    div {
         height: 2.5rem;
         // border: solid;
     }
-    #points{
+    #points {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         font-size: 1.6rem;
         width: 30%;
-
-        button{
+        button {
             background: none;
             border: none;
             width: fit-content;
             height: fit-content;
             display: inline-block;
-            i{
+            i {
                 font-size: 1.3rem;
                 color: $defaultpurple;
                 text-align: center;
             }
         }
-
-        #dropdown-basic{
+        .showdropdown:focus,
+        .dropdown:focus {
+            border: none;
+        }
+        #dropdown-basic {
             position: absolute;
             display: flex;
             align-items: center;
             justify-content: flex-end;
             width: 100%;
         }
-
-        .dropdown{
+        .dropdown {
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
-
-        .dropdown-menu{
+        .dropdown-menu {
             border: black solid 0.3px;
-            background-color: $lightpurple;
+            background-color: rgb(161, 49, 59);
+            border: solid black 0.5px;
             height: fit-content;
-            padding: 1rem;
+            padding: 0;
             text-align: center;
-            
-
-            i{
+            i {
                 color: black;
                 text-align: start;
             }
-
-        .dropdown-item{
-            margin: 5px;
-            border: white;
+            .dropdown-item {
+                margin: 5px;
+                border: white;
+                width: 90%;
+                text-align: center;
+            }
         }
-        }
-
-        .dropdown-item:first-child{
+        .dropdown-item:first-child {
             background-color: rgb(161, 49, 59);
             color: white;
-            border-radius: 1rem;
-
-            
+            // border-radius: 1rem;
         }
-
-        .dropdown-item:nth-child(2){
-            background-color: $defaultgrey;
-            color: white;
-            border-radius: 1rem;
-        }
-        .dropdown-item:nth-child(3){
-            background-color: $defaultgrey;
-            color: white;
-            border-radius: 1rem;
-        }
-
     }
-    #pagetitle{
+    #pagetitle {
         display: flex;
         font-size: 1.3rem;
         align-items: center;
         gap: 0.5rem;
-
-        i{
+        i {
             align-items: center;
             color: $defaultgrey;
             font-size: 1.1rem;
-
         }
     }
-
-    #divminilogo{
+    #divminilogo {
         display: flex;
         align-items: center;
         justify-content: left;
-        width: 30% ;
+        width: 30%;
     }
-
-    img{
+    img {
         // width: 100%;
         height: 90%;
         object-fit: cover;
     }
-
-
-    
-    
 }
 
-    // Fenêtre Modale Disconnect
-
-  .modal-content{
+// Fenêtre Modale Disconnect
+.modal-content {
     display: flex;
     justify-content: center;
     position: absolute;
     background-color: $lightpurple;
     border: solid black 0.5px;
     border-radius: 0.2rem;
-   
-    .modal-body{
-        font-family: 'Orbitron';
+    .modal-body {
+        font-family: "Orbitron";
         text-align: center;
         margin-bottom: 2rem;
     }
-    .modal-footer{
+    .modal-footer {
         display: flex;
         justify-content: center;
         gap: 3.5rem;
     }
-
     .btn-primary {
         background-color: rgb(39, 102, 23);
         color: whitesmoke;
-        font-family: 'Orbitron';
+        font-family: "Orbitron";
         padding: 0.3rem;
         width: 4rem;
-
     }
     .btn-secondary {
         background-color: rgb(161, 49, 59);
         color: white;
-        font-family: 'Orbitron';
+        font-family: "Orbitron";
         padding: 0.3rem;
         width: 4rem;
     }
-  }
-
-
-  
-  
-  
+}

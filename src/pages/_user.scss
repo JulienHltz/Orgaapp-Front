@@ -1,6 +1,8 @@
 @import "../assets/scss/utils/mixins";
 .container {
-    @include container;
+    // @include container;
+    height: 75vh;
+    overflow: auto;
     .card {
         @include card;
         h4 {
@@ -18,6 +20,28 @@
         .add {
             width: 40%;
             color: $add;
+        }
+        .etat {
+            width: 1rem;
+            height: 1rem;
+            border: 1px solid;
+            border-radius: 50%;
+            background-color: green;
+            grid-column: 2;
+            grid-row: 1;
+            justify-self: flex-start;
+        }
+        .created-date {
+            // une mixin ???
+            font-size: xx-small;
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .modificated-date {
+            // une mixin ???
+            font-size: xx-small;
+            grid-column: 1;
+            grid-row: 3;
         }
     }
 }

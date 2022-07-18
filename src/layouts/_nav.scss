@@ -1,5 +1,4 @@
-
-nav{
+nav {
     color: $defaultgrey;
     border: 3px solid $defaultgrey;
     margin: 0.5rem;
@@ -11,31 +10,27 @@ nav{
     border-radius: 1rem;
     box-sizing: content-box;
     background-color: white;
-    ul{
-      display: flex;
-      
-      list-style-type: none;
-      justify-content: space-between;
-      font-size: 2rem;
-      padding: 0;
-        li:first-child{
-          padding-left: 0.5rem;
+    ul {
+        display: flex;
+        list-style-type: none;
+        justify-content: space-between;
+        font-size: 2rem;
+        padding: 0;
+        li:first-child {
+            padding-left: 0.5rem;
         }
-        li:last-child{
+        li:last-child {
             padding-right: 0.5rem;
-            
         }
-        .link-active{
-          color:$defaultpurple;
-
+        .link-active {
+            color: $defaultpurple;
         }
-
     }
-    a, a:hover, a:focus, a:active {
-      text-decoration: none;
-      color: inherit;
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+        text-decoration: none;
+        color: inherit;
+    }
 }
-}
-  
-  
-  
