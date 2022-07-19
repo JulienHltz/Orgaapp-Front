@@ -17,6 +17,20 @@
         input {
             width: auto;
         }
+        .stock {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            .yes {
+                justify-self: center;
+                display: flex;
+                gap: 0.5rem;
+            }
+            .no {
+                justify-self: center;
+                display: flex;
+                gap: 0.5rem;
+            }
+        }
         button {
             @include button-add;
         }

@@ -43,12 +43,13 @@ const Nav = () => {
   const ItemsComponents = ({
     cls,
     pathName,
+    isActive,
     hideWhenLogged,
     hideWhenNotLogged
   }) => {
     let tmp =
-      hideWhenLogged & (window.localStorage.getItem('token') != null) ||
-      hideWhenNotLogged & (window.localStorage.getItem('token') == null) ? (
+      hideWhenLogged & (window.sessionStorage.getItem('token') != null) ||
+      hideWhenNotLogged & (window.sessionStorage.getItem('token') == null) ? (
         ''
       ) : (
         <li>
@@ -68,13 +69,17 @@ const Nav = () => {
     <nav>
       <ul>
         {navItems.map(
-          ({ clsName, pathName, hideWhenLogged, hideWhenNotLogged }, idx) => (
+          (
+            { clsName, pathName, isActive, hideWhenLogged, hideWhenNotLogged },
+            idx
+          ) => (
             <ItemsComponents
               cls={clsName}
               pathName={pathName}
               hideWhenLogged={hideWhenLogged}
               hideWhenNotLogged={hideWhenNotLogged}
               key={idx}
+              isActive={isActive}
             ></ItemsComponents>
           )
         )}

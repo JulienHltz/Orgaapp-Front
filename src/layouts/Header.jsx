@@ -17,7 +17,7 @@ const Header = () => {
   const handleShow = () => setShow(true)
 
   const disconnect = () => {
-    window.localStorage.removeItem('token')
+    window.sessionStorage.removeItem('token')
     navigate('/connexion')
     setShow(false)
   }
@@ -64,7 +64,7 @@ const Header = () => {
         </div>
 
         <div id='points'>
-          {window.localStorage.getItem('token') != null && (
+          {window.sessionStorage.getItem('token') != null && (
             <Dropdown>
               <Dropdown.Toggle variant='success' id='dropdown-basic'>
                 <i className='fas fa-ellipsis-v'></i>

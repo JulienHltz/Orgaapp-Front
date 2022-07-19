@@ -8,7 +8,7 @@ import ModEquipment from '../components/ModEquipment'
 import './_user.scss'
 
 const Equipement = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [isLoading, setIsLoading] = useState(true)
   const [equipmentList, setEquipmentList] = useState([])
   const [equipmentToModif, setEquipmentToModif] = useState(-1)
@@ -68,7 +68,7 @@ const Equipement = () => {
         }
       })
       .then(res => {
-        // console.log(res.data)
+        console.log('materiels: ', res.data)
         // console.log(res.data['hydra:member'])
 
         setEquipmentList(res.data['hydra:member'])
@@ -87,13 +87,20 @@ const Equipement = () => {
         ) : equipmentToModif === -1 ? (
           <>
             <NavLink to='/nouveau-matos'>
-              <i className='fas fa-plus-circle fa-2x add'></i>
+              <p>Ajouter du matériel</p>
+              {/* <i className='fas fa-plus-circle fa-2x add'></i> */}
             </NavLink>
-            {equipmentList.map((user, index) => (
+            <NavLink to='/nouvelle-category'>
+              <p>Ajouter une catégorie de matériel</p>
+            </NavLink>
+            <NavLink to='/nouvel-etat'>
+              <p>Ajouter un état</p>
+            </NavLink>
+            {equipmentList.map((equipment, index) => (
               <EquipmentCard
                 key={index}
                 index={index}
-                user={user}
+                equipment={equipment}
                 onClick={delEquipment}
                 modif={enableModif}
               />
@@ -101,17 +108,11 @@ const Equipement = () => {
           </>
         ) : (
           <ModEquipment
-            user={equipmentList[equipmentToModif]}
+            equipment={equipmentList[equipmentToModif]}
             onSubmit={modifEquipment}
           />
         )}
       </div>
-      <NavLink to='/nouvelle-category'>
-        <p>Ajouter une catégorie de matériel</p>
-      </NavLink>
-      <NavLink to='/nouvel-etat'>
-        <p>Ajouter un état</p>
-      </NavLink>
     </>
   )
 }

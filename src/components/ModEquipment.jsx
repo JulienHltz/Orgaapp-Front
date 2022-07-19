@@ -17,15 +17,18 @@ const schema = yup.object().shape({
 
   category: yup.string().required(),
 
-  inStock: yup.boolean().required()
+  instock: yup.boolean().required()
 })
 
-const ModEquipment = ({ user, onSubmit }) => {
-  const token = localStorage.getItem('token')
+const ModEquipment = ({ equipment, onSubmit }) => {
+  const token = sessionStorage.getItem('token')
 
   const [healthSelect, setHealthSelect] = useState([])
   const [categorySelect, setCategorySelect] = useState([])
+  const [defaultHealth, setDefaultHeath] = useState('')
+  const [defaultCtagory, setDefaultCategory] = useState('')
 
+  console.log(equipment)
   const {
     register,
     handleSubmit,
@@ -35,10 +38,8 @@ const ModEquipment = ({ user, onSubmit }) => {
     mode: 'onTouched',
     resolver: yupResolver(schema),
     defaultValues: {
-      name: user.name,
-      health: user.health,
-      category: user.categorie,
-      stock: user.inStock
+      name: equipment.name,
+      instock: equipment.inStock
     }
   })
 
@@ -70,7 +71,7 @@ const ModEquipment = ({ user, onSubmit }) => {
         })
       ])
       .then(res => {
-        console.log(res)
+        console.log('reponse:', res)
         setHealthSelect(res[0].data['hydra:member'])
         setCategorySelect(res[1].data['hydra:member'])
       })
@@ -78,6 +79,8 @@ const ModEquipment = ({ user, onSubmit }) => {
         console.log(error)
       })
 
+    setDefaultHeath(equipment.health.name)
+    setDefaultCategory(equipment.categorie.name)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -90,8 +93,37 @@ const ModEquipment = ({ user, onSubmit }) => {
           <input type='text' id='name' name='name' {...register('name')} />
           {errors.equipmentname && <span>{errors.equipmentname.message}</span>}
 
+          <label htmlFor='stock'>En Stock :</label>
+          <div className='stock'>
+            <div className='yes'>
+              <input
+                type='radio'
+                id='yes'
+                name='instock'
+                value={true}
+                {...register('instock')}
+              />
+              <label htmlFor='yes'>Oui</label>
+            </div>
+            <div className='no'>
+              <input
+                type='radio'
+                id='no'
+                name='instock'
+                value={false}
+                {...register('instock')}
+              />
+              <label htmlFor='no'>Non</label>
+            </div>
+          </div>
+
           <label htmlFor='health'>Etat :</label>
-          <select name='health' id='health' {...register('health')}>
+          <select
+            name='health'
+            id='health'
+            defaultValue={defaultHealth}
+            {...register('health')}
+          >
             <option value='#'>-- Choisir --</option>
             {healthSelect.map((health, index) => (
               <option key={index} health={health} value={health.name}>
@@ -102,7 +134,12 @@ const ModEquipment = ({ user, onSubmit }) => {
           {/* {errors.health && <span>{errors.health.message}</span>} */}
 
           <label htmlFor='category'>Catégorie :</label>
-          <select name='category' id='category' {...register('category')}>
+          <select
+            name='category'
+            id='category'
+            defaultValue={defaultCtagory}
+            {...register('category')}
+          >
             <option value='#'>-- Choisir --</option>
             {categorySelect.map((category, index) => (
               <option key={index} health={category} value={category.name}>
@@ -112,26 +149,6 @@ const ModEquipment = ({ user, onSubmit }) => {
           </select>
           {/* {errors.category && <span>{errors.category.message}</span>} */}
 
-          <label htmlFor='stock'>En Stock :</label>
-          <div className='stock'>
-            <input
-              type='radio'
-              id='yes'
-              name='yes'
-              value={true}
-              {...register('inStock')}
-            />
-            <label htmlFor='yes'>Oui</label>
-
-            <input
-              type='radio'
-              id='no'
-              name='yes'
-              value={false}
-              {...register('inStock')}
-            />
-            <label htmlFor='no'>Non</label>
-          </div>
           <button type='submit' disabled={isSubmitting}>
             Modifier
           </button>

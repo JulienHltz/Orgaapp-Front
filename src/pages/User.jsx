@@ -8,7 +8,7 @@ import axios from 'axios'
 import { useState } from 'react'
 
 const User = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
   const [isLoading, setIsLoading] = useState(true)
   const [userList, setUserList] = useState([])
   const [userToModif, setUserToModif] = useState(-1)

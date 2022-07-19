@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 })
 
 const NewEquipment = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const navigate = useNavigate()
 
@@ -98,6 +98,30 @@ const NewEquipment = () => {
           <input type='text' id='name' name='name' {...register('name')} />
           {errors.equipmentname && <span>{errors.equipmentname.message}</span>}
 
+          <label htmlFor='stock'>En Stock :</label>
+          <div className='stock'>
+            <div className='yes'>
+              <input
+                type='radio'
+                id='yes'
+                name='yes'
+                value={true}
+                {...register('inStock')}
+              />
+              <label htmlFor='yes'>Oui</label>
+            </div>
+            <div className='no'>
+              <input
+                type='radio'
+                id='no'
+                name='yes'
+                value={false}
+                {...register('inStock')}
+              />
+              <label htmlFor='no'>Non</label>
+            </div>
+          </div>
+
           <label htmlFor='health'>Etat :</label>
           <select name='health' id='health' {...register('health')}>
             <option value='#'>-- Choisir --</option>
@@ -107,6 +131,7 @@ const NewEquipment = () => {
               </option>
             ))}
           </select>
+
           {/* {errors.health && <span>{errors.health.message}</span>} */}
 
           <label htmlFor='categorie'>Catégorie :</label>
@@ -120,26 +145,6 @@ const NewEquipment = () => {
           </select>
           {/* {errors.categorie && <span>{errors.categorie.message}</span>} */}
 
-          <label htmlFor='stock'>En Stock :</label>
-          <div className='stock'>
-            <input
-              type='radio'
-              id='yes'
-              name='yes'
-              value={true}
-              {...register('inStock')}
-            />
-            <label htmlFor='yes'>Oui</label>
-
-            <input
-              type='radio'
-              id='no'
-              name='yes'
-              value={false}
-              {...register('inStock')}
-            />
-            <label htmlFor='no'>Non</label>
-          </div>
           <button type='submit' disabled={isSubmitting}>
             Ajouter
           </button>

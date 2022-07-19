@@ -13,7 +13,7 @@ const schema = yup.object().shape({
 })
 
 const NewHealth = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const {
     register,

@@ -1,6 +1,6 @@
-const EquipmentCard = ({ user, onClick, index, modif }) => {
+const EquipmentCard = ({ equipment, onClick, index, modif }) => {
   const delEquipment = () => {
-    onClick(user['@id'], index)
+    onClick(equipment['@id'], index)
   }
 
   const enableModif = () => {
@@ -8,26 +8,32 @@ const EquipmentCard = ({ user, onClick, index, modif }) => {
   }
 
   return (
-    <div className='card'>
-      <h4>{user.name}</h4>
-      <div className='etat'>
-        <p>{user.healths}</p>
-      </div>
-      {/* <div className='created-date'>
-        <p>{user.createdAt}</p>
+    <>
+      <div className='card'>
+        <h4>{equipment.name}</h4>
+        <div className='etat'>
+          <p>{equipment.healths}</p>
+        </div>
+        <div className='inStock'>
+          {equipment.inStock === true && <h6>En stock</h6>}
+          {equipment.inStock === false && <h6>A louer</h6>}
+        </div>
+        {/* <div className='created-date'>
+        <p>{equipment.createdAt}</p>
       </div>
       <div className='modificated-date'>
-        <p>{user.modificatedAt}</p>
+        <p>{equipment.modificatedAt}</p>
       </div> */}
-      <ul className='mod-sup'>
-        <li className='mod' onClick={enableModif}>
-          <i className='fas fa-edit'></i>
-        </li>
-        <li className='sup' onClick={delEquipment}>
-          <i className='fas fa-trash-alt'></i>
-        </li>
-      </ul>
-    </div>
+        <ul className='mod-sup'>
+          <li className='mod' onClick={enableModif}>
+            <i className='fas fa-edit'></i>
+          </li>
+          <li className='sup' onClick={delEquipment}>
+            <i className='fas fa-trash-alt'></i>
+          </li>
+        </ul>
+      </div>
+    </>
   )
 }
 

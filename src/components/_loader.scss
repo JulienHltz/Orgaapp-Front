@@ -10,7 +10,7 @@
         border: solid 3px white;
         background-color: $defaultpurple;
         animation: animate 3s linear infinite;
-        transform: translateY(-40%);
+        transform: translateY(-30%);
         @keyframes animate {
             0% {
                 transform: rotate(0deg);

@@ -38,7 +38,7 @@ const schema = yup.object().shape({
 })
 
 const NewUser = () => {
-  const token = localStorage.getItem('token')
+  const token = sessionStorage.getItem('token')
 
   const navigate = useNavigate()
 

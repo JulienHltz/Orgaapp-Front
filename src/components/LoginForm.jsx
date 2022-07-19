@@ -26,7 +26,7 @@ const LoginForm = () => {
         //   timestamp: Date.now()
         // }
         // window.localStorage.setItem('infosConnec', infosConnec)
-        window.localStorage.setItem('token', response.data.token)
+        window.sessionStorage.setItem('token', response.data.token)
         setIsConnected(true)
         setTimeout(() => {
           navigate('/')

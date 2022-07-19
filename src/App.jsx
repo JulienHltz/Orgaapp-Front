@@ -22,19 +22,19 @@ const App = () => {
           element={<Layout component='user' />}
         ></Route>
         <Route
-          path='/nouvel-utilisateur'
+          path='/utilisateurs/nouvel-utilisateur'
           element={<Layout component='newuser' />}
         ></Route>
         <Route
-          path='/nouveau-matos'
+          path='/materiel/nouveau-matos'
           element={<Layout component='newequipment' />}
         ></Route>
         <Route
-          path='/nouvel-etat'
+          path='/materiel/nouvel-etat'
           element={<Layout component='newhealth' />}
         ></Route>
         <Route
-          path='/nouvelle-category'
+          path='/materiel/nouvelle-category'
           element={<Layout component='newcategory' />}
         ></Route>
       </Routes>
