@@ -4,7 +4,7 @@ import logomini from '../assets/images/logomini.jpg'
 const Loader = () => {
   return (
     <>
-      <div className='container'>
+      <div className='container-loader'>
         <div className='square'>
           <img src={logomini} alt='logomini' />
         </div>

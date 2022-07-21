@@ -1,7 +1,8 @@
 @import "../assets/scss/utils/variables";
 @import "../assets/scss/utils/mixins";
-.container {
+.container-loader {
     @include container;
+    height: 100%;
     .square {
         align-items: center;
         height: 7rem;

@@ -79,14 +79,11 @@ const User = () => {
   }, [])
   return (
     <>
-      <div className='container'>
+      <>
         {isLoading ? (
           <Loader />
         ) : userToModif === -1 ? (
-          <>
-            <NavLink to='/nouvel-utilisateur'>
-              <i className='fas fa-plus-circle fa-2x add'></i>
-            </NavLink>
+          <div className='container'>
             {userList.map((user, index) => (
               <UserCard
                 key={index}
@@ -96,11 +93,14 @@ const User = () => {
                 modif={enableModif}
               />
             ))}
-          </>
+            <NavLink to='/utilisateurs/nouvel-utilisateur'>
+              <i className='fas fa-plus-circle fa-2x add'></i>
+            </NavLink>
+          </div>
         ) : (
           <ModUser user={userList[userToModif]} onSubmit={modifUser} />
         )}
-      </div>
+      </>
     </>
   )
 }

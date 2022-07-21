@@ -14,10 +14,14 @@ const EquipmentCard = ({ equipment, onClick, index, modif }) => {
         <div className='etat'>
           <p>{equipment.healths}</p>
         </div>
+        <div className='category'>
+          <h6>Catégorie : {equipment.categorie['name']}</h6>
+        </div>
         <div className='inStock'>
           {equipment.inStock === true && <h6>En stock</h6>}
           {equipment.inStock === false && <h6>A louer</h6>}
         </div>
+
         {/* <div className='created-date'>
         <p>{equipment.createdAt}</p>
       </div>

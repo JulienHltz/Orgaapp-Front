@@ -1,8 +1,6 @@
 @import "../assets/scss/utils/mixins";
 .container {
-    // @include container;
-    // height: 75vh;
-    // overflow: auto;
+    @include container;
     .card {
         @include card;
         h4 {
@@ -30,6 +28,14 @@
             grid-column: 2;
             grid-row: 1;
             justify-self: end;
+        }
+        .category {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .inStock {
+            grid-column: 1;
+            grid-row: 3;
         }
         .created-date {
             // une mixin ???

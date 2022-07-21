@@ -1,47 +1,35 @@
-#homeContainer{
+@import "../assets/scss/utils/_variables.scss";
+#homeContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100%;
     justify-content: center;
     gap: 2.5rem;
-    h1{
-        // font-family: 'open sans', sans-serif;
-        font-family: 'orbitron';
+    h1 {
+        font-family: "orbitron";
         font-weight: bold;
         letter-spacing: 0.2rem;
-        color: rgba(0, 0, 0, 0.678);
+        color: $defaultpurple;
         transform: scaleY(140%);
-        text-shadow: 2px 2px 3px #5d246b;
         font-size: 1.8rem;
         text-transform: uppercase;
         animation: translate 2s ease-in forwards;
         transform: translateY(-250%);
         opacity: 0;
-
-       
-
         @keyframes translate {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-
-
     }
-
-    .imgLoginContainer{
-
+    .imgLoginContainer {
         width: 20rem;
         height: 7rem;
         margin-bottom: 5rem;
-    
-        img{
+        img {
             background-size: cover;
         }
-
     }
 }
-

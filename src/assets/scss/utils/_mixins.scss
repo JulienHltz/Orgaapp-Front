@@ -28,11 +28,15 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    // @include desktop-only() {
+    //     display: grid;
+    //     grid-template-columns: repeat(2, 1fr);
+    // }
 }
 
 // Card
 @mixin card {
-    width: 35vh;
+    width: 55vw;
     border: 2px solid $defaultgrey;
     border-radius: 0.5rem;
     padding: 1rem;
@@ -41,6 +45,10 @@
     justify-content: center;
     align-items: center;
     row-gap: 0.5rem;
+    @include secondary-font();
+    // @include desktop-only() {
+    //     width: 30vw;
+    // }
 }
 
 // positions icônes modifier / supprimer

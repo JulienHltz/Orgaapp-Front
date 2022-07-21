@@ -81,21 +81,21 @@ const Equipement = () => {
 
   return (
     <>
-      <div className='container'>
+      <>
         {isLoading ? (
           <Loader />
         ) : equipmentToModif === -1 ? (
-          <>
-            <NavLink to='/nouveau-matos'>
-              <p>Ajouter du matériel</p>
-              {/* <i className='fas fa-plus-circle fa-2x add'></i> */}
+          <div className='container'>
+            <NavLink to='/materiel/nouveau-matos'>
+              {/* <p>Ajouter du matériel</p> */}
+              <i className='fas fa-plus-circle fa-2x add'></i>
             </NavLink>
-            <NavLink to='/nouvelle-category'>
+            <NavLink to='/materiel/nouvelle-category'>
               <p>Ajouter une catégorie de matériel</p>
             </NavLink>
-            <NavLink to='/nouvel-etat'>
+            {/* <NavLink to='/materiel/nouvel-etat'>
               <p>Ajouter un état</p>
-            </NavLink>
+            </NavLink> */}
             {equipmentList.map((equipment, index) => (
               <EquipmentCard
                 key={index}
@@ -105,14 +105,14 @@ const Equipement = () => {
                 modif={enableModif}
               />
             ))}
-          </>
+          </div>
         ) : (
           <ModEquipment
             equipment={equipmentList[equipmentToModif]}
             onSubmit={modifEquipment}
           />
         )}
-      </div>
+      </>
     </>
   )
 }
